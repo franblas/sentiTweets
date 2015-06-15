@@ -5,8 +5,9 @@ Created on Mon Jun 15 17:15:43 2015
 @author: Paco
 """
 
-from emot import Emot
 from sentimentanalysis import data, preProcessed, scores
+from emot import Emot
+from classifier import Classifier
 
 # get Emot scores
 em = Emot()
@@ -19,4 +20,9 @@ preprodata = preProcessed(data)
     
 # Get scores    
 tweets_score = scores(preprodata,emot_score)    
+    
+# Train the classifier 
+c = Classifier(data)
+c.process(tweets_score)    
+print c._score_classif
     
